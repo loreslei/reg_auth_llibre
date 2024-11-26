@@ -1,0 +1,33 @@
+body{
+    background-image: url(imgs/livro.jpg);
+    background-size: cover;
+}
+
+
+.margin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ContainerLogin{
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.836);
+    backdrop-filter: blur(5px);
+}
+
+#BtnCadastrar{
+    background: linear-gradient(90deg, #00C9FF, #92FE9D) !important;
+    color: #fdfdfd;
+    width: 70%;
+    padding: .5rem 1rem .5rem 1rem;
+    transition: all 1s ease-out;
+}
+
+#BtnCadastrar:hover{
+    opacity: 65%;
+}
