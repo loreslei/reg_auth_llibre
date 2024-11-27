@@ -1,6 +1,14 @@
 body{
     background-image: url(imgs/livro.jpg);
     background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    backdrop-filter: blur(3px) saturate(60%);
+}
+
+#h2{
+    border: none !important;
+    color: rgb(40, 44, 51);
 }
 
 
@@ -12,12 +20,15 @@ body{
     align-items: center;
 }
 
+.input-color{
+    background-color: #b7bdc972 !important;
+}
+
 #ContainerLogin{
     width: 30%;
     height: 70%;
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.836);
-    backdrop-filter: blur(5px);
+    background-color: #fdfdfd;
 }
 
 #BtnCadastrar{

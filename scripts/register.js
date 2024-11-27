@@ -17,55 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const senhaConfirmada = document.getElementById("senhaConfirmada");
   
     form.addEventListener("submit", (e) => {
-      e.preventDefault(); // Evita o envio padrão do formulário
-  
-      // Captura dos campos
+      e.preventDefault();
       const nomeUsuario = document.getElementById("nome").value;
       const email = document.getElementById("email").value;
       const senhaValor = senha.value;
       const senhaConfirmadaValor = senhaConfirmada.value;
   
-      // Validação básica
+      
       if (senhaValor !== senhaConfirmadaValor) {
         alert("As senhas não coincidem. Por favor, tente novamente.");
         return;
       }
-  
-      if (!nomeUsuario || !email || !senhaValor) {
-        alert("Todos os campos devem ser preenchidos.");
-        return;
-      }
-  
-      // Simulando envio dos dados para um backend
-      const usuario = {
-        nome: nomeUsuario,
-        email: email,
-        senha: senhaValor,
-      };
-  
-      fetch('/api/cadastro', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usuario),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Cadastro realizado com sucesso!");
-          } else {
-            alert("Erro no cadastro: " + data.message);
-          }
-        })
-        .catch((error) => {
-          console.error("Erro:", error);
-          alert("Erro ao cadastrar.");
-        });
-      alert("Cadastro realizado com sucesso!");
-  
-      // Limpar o formulário
-      form.reset();
+      
     });
   });
   
