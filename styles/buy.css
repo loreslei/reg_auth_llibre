@@ -16,8 +16,8 @@
     width: 40vw;
     height: 50vh;
     display: flex;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     justify-content: center;
     align-items: center;
     flex-direction: row !important;
@@ -33,24 +33,6 @@
     margin-left: 20px;
 }
 
-@media(max-width: 1500px) {
-    .card {
-        width: 90%; 
-        max-width: 600px; 
-    }
+#Label{
+    padding-left: 8%;
 }
-
-@media(max-width: 768px) {
-    .card {
-        width: 100%; 
-        max-width: 500px; 
-    }
-}
-
-@media(max-width: 576px) {
-    .card {
-        width: 100%; 
-        max-width: 400px; 
-    }
-}
-
