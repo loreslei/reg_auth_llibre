@@ -12,3 +12,11 @@ body {
     background-color: #fdfdfd;
     color: rgb(40, 44, 51);
 }
+
+.margin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
