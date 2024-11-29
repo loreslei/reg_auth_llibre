@@ -30,10 +30,27 @@
 }
 
 #Excluir{
-    margin-left: 107px;
+    margin-left: 20px;
 }
 
-#Label{
-    transform: translateX(-13.5rem);
-    width: fit-content;
+@media(max-width: 1500px) {
+    .card {
+        width: 90%; 
+        max-width: 600px; 
+    }
 }
+
+@media(max-width: 768px) {
+    .card {
+        width: 100%; 
+        max-width: 500px; 
+    }
+}
+
+@media(max-width: 576px) {
+    .card {
+        width: 100%; 
+        max-width: 400px; 
+    }
+}
+
