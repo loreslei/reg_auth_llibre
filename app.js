@@ -1,101 +1,103 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const app = express();
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
-//Config JSON response
+const app = express();
+app.use(cors());
 app.use(express.json());
 
-//Models
-const User = require('./models/User');
-//Open Route Public Route
-app.get('/', (req, res) =>{
-    res.status(200).json({msg:'Bem vindo a nossa API!'})
+const User = require("./models/User");
+
+// Rota pública
+app.get("/", (req, res) => {
+  res.status(200).json({ msg: "Bem-vindo à nossa API!" });
 });
 
-//Open Route Private Route
-app.get('/', (req, res) =>{
-    res.status(200).json({msg:'Bem vindo a nossa API!'})
-});
+// Rota de registro de usuário
+app.post("/auth/register", async (req, res) => {
+  const { name, email, password, confirmpassword } = req.body;
 
-//Register User
-app.post('/auth/register', async(req, res) =>{
+  if (!name || !email || !password || !confirmpassword) {
+    return res.status(422).json({ msg: "Todos os campos são obrigatórios!" });
+  }
 
-    const{name, email, password, confirmpassword} = req.body;
-    //validations
-    if(!name ||!email ||!password ||!confirmpassword){
-        return res.status(422).json({msg:'Todos os campos são obrigatórios!'});
-    }
+  if (password !== confirmpassword) {
+    return res.status(422).json({ msg: "As senhas não conferem!" });
+  }
 
-    if(password!==confirmpassword){
-        return res.status(422).json({msg:'Senhas não conferem!'});
-    }
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    return res.status(422).json({ msg: "Usuário já cadastrado!" });
+  }
 
-    //check if user exists
-    const existingUser = await User.findOne({email: email});
-    if(existingUser){
-        return res.status(422).json({msg:'Usuário já existe!'});
-    }
+  const salt = await bcrypt.genSalt(12);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
-    //create password
-    const salt = await bcrypt.genSalt(12);
-    const hashedPassword = await bcrypt.hash(password, salt);
+  const user = new User({
+    name,
+    email,
+    password: hashedPassword,
+  });
 
-    //create new user
-    const user = new User({
-        name,
-        email,
-        password: hashedPassword,
-        });
-        try {
-            await user.save();
-            res.status(201).json({msg:'Usuário criado com sucesso!'});
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({msg: 'Ocorreu um erro inesperado. Tente novamente mais tarde!'});
-        }
+  try {
+    await user.save();
+    res.status(201).json({ msg: "Usuário cadastrado com sucesso!" });
+  } catch (error) {
+    res.status(500).json({ msg: "Erro ao salvar o usuário." });
+  }
 });
 
 
-// Login User
-app.post('/auth/login', async(req, res)=>{
-    const {email, password} = req.body;
-    //validations
-    if(!email ||!password){
-        return res.status(422).json({msg:'Todos os campos são obrigatórios!'});
-    }
+// Rota de login
+app.post("/auth/login", async (req, res) => {
+  const { email, password } = req.body;
 
-    //check if user exists
-    const user = await User.findOne({email: email});
-    if(!user){
-        return res.status(404).json({msg:'Usuário não encontrado!'});
-    }
+  // Verifica se o email e senha foram fornecidos
+  if (!email || !password) {
+    return res.status(422).json({ msg: "E-mail e senha são obrigatórios!" });
+  }
 
-    //check password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch){
-        return res.status(422).json({msg:'Senha inválida!'});
-    }
+  // Busca o usuário no banco de dados
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).json({ msg: "Usuário não encontrado!" });
+  }
 
-    try {
-        const secret = process.env.secret
-        const token = jwt.sign({
-            id: user._id}, secret, 
-            {expiresIn: '1h'});
-            res.status(200).json({msg:"Login feito com sucesso!", token});
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({msg: 'Ocorreu um erro inesperado. Tente novamente mais tarde!'});
-    }
+  // Verifica a senha
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) {
+    return res.status(401).json({ msg: "Senha inválida!" });
+  }
+
+  try {
+    // Gera um token JWT
+    const token = jwt.sign(
+      {
+        id: user._id,
+      },
+      process.env.SECRET, 
+      { expiresIn: "1h" }
+    );
+
+    res.status(200).json({ msg: "Login realizado com sucesso!", token });
+  } catch (error) {
+    res.status(500).json({ msg: "Erro no servidor." });
+  }
 });
 
-//Credencials
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASS;
 
-mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.a6hcx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`).then(()=>{
-    app.listen(3000);
-    console.log('MongoDB conectado com sucesso!')
-}).catch((err)=> console.error(err))
+ const dbUser = process.env.DB_USER;
+ const dbPassword = process.env.DB_PASS;
+
+// Conexão com o banco de dados MongoDB
+mongoose
+  .connect(
+    `mongodb+srv://${dbUser}:${dbPassword}@cluster0.a6hcx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+  )
+  .then(() => {
+    app.listen(3000, () => console.log("API rodando na porta 3000!"));
+  })
+  .catch((err) => console.error(err));
