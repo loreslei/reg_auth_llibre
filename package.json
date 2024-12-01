@@ -15,7 +15,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node server.js",
+    "start": "node app.js",
     "dev": "nodemon app.js"   
   },
   "repository": {
