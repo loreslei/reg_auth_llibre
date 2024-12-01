@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
-  const apiUrl = process.env.API_URL;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //http://localhost:3000/auth/register
 
     try {
-      const response = await fetch(`${apiUrl}/auth/register`, {
+      const response = await fetch(`http://localhost:3000/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

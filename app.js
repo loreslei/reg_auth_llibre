@@ -100,8 +100,8 @@ mongoose
     `mongodb+srv://${dbUser}:${dbPassword}@cluster0.a6hcx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
-    app.listen(apiUrl || 8080, () => {
-      console.log(`API rodando na porta ${apiUrl || 8080}!`);
+    app.listen(3000, () => {
+      console.log(`API rodando na porta 3000!`);
     });
     
   })
