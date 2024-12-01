@@ -1,3 +1,5 @@
+const apiUrl = process.env.API_URL;
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
 
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/auth/register", {
+      const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
