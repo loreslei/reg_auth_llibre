@@ -1,5 +1,3 @@
-const apiUrl = process.env.API_URL;
-
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("loginForm"); // Seleciona o formulário
 
