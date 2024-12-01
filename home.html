@@ -85,10 +85,11 @@
 
                 
                 card.innerHTML = `
-                    <img src="styles/imgs/livro.jpg" class="card-img-top" alt="${livro.nome}">
+                    <img src="styles/imgs/livro.jpg" class="card-img-top" alt="${livro.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title text-center">${livro.nome}</h5>
-                        <p class="card-text text-center text-body-secondary">Estoque: ${livro.estoque}</p>
+                        <h5 class="card-title text-center">${livro.titulo}</h5>
+                        <p class="card-text text-center text-body-secondary">Estoque: ${livro.autor}</p>
+                        <p class="card-text text-center text-body-secondary">Estoque: ${livro.quantidade}</p>
                         <a href="buy.html" class="btn btn-primary w-100 rounded-pill">Adicionar ao Carrinho</a>
                     </div>
                 `;
