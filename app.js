@@ -92,14 +92,16 @@ app.post("/auth/login", async (req, res) => {
  const dbUser = process.env.DB_USER;
  const dbPassword = process.env.DB_PASS;
 
+ const apiUrl = process.env.API_URL;
+
 // Conexão com o banco de dados MongoDB
 mongoose
   .connect(
     `mongodb+srv://${dbUser}:${dbPassword}@cluster0.a6hcx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
-    app.listen(process.env.PORT || 3000, () => {
-      console.log(`API rodando na porta ${process.env.PORT || 3000}!`);
+    app.listen(apiUrl || 8080, () => {
+      console.log(`API rodando na porta ${apiUrl || 8080}!`);
     });
     
   })
