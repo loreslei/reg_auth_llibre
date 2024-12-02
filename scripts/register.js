@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("As senhas não conferem!");
       return;
     }
-
-    //http://localhost:3000/auth/register
+    //const response = await fetch(`${process.env.API_URL}/auth/register`, {
+    //"http://localhost:3000/auth/register"
 
     try {
-      const response = await fetch("${process.env.API_URL}/auth/register", {
+      const response = await fetch(`${process.env.API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

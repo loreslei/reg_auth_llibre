@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Fazendo a requisição POST para o backend
-            const response = await fetch("${process.env.API_URL}/auth/login", {
+            //const response = await fetch(`${process.env.API_URL}/auth/register`, {
+            const response = await fetch(`${process.env.API_URL}/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // Define o tipo de dado enviado
