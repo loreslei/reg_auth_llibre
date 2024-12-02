@@ -9,9 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const corsOptions = {
+  origin: "https://reg-auth-llibre-rorx-ktfjko4uv-loresleis-projects.vercel.app", // Coloque a URL correta do seu frontend no Vercel
+};
+
+app.use(cors(corsOptions));
+
 app.use(
   cors({
-    origin: ["https://https://reg-auth-llibre-rorx.vercel.app", "https://regauthllibre-production.up.railway.app"],
+    origin: "https://regauthllibre-production.up.railway.app",
     credentials: true,
   })
 );
