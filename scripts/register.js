@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //http://localhost:3000/auth/register
 
     try {
-      const response = await fetch("http://localhost:3000/auth/register", {
+      const response = await fetch("${process.env.API_URL}/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
