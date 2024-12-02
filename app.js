@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
-
+// Configuração do CORS
 const corsOptions = {
   origin: 'https://reg-auth-llibre-rorx-ktfjko4uv-loresleis-projects.vercel.app', // Permite qualquer origem. Você pode definir um domínio específico aqui, como 'https://seu-frontend.vercel.app'.
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
@@ -19,7 +19,6 @@ const corsOptions = {
 // Usa o CORS com a configuração definida
 app.use(cors(corsOptions));
 
-
 app.use(
   cors({
     origin: "https://regauthllibre-production.up.railway.app",
@@ -27,13 +26,22 @@ app.use(
   })
 );
 
-
-
-const User = require("./models/User");
+// Servindo arquivos estáticos (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, "public")));
 
 // Rota pública
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Bem-vindo à nossa API!" });
+});
+
+// Rota para servir o arquivo HTML de login
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+
+// Rota para servir o arquivo HTML de registro
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Rota de registro de usuário
@@ -69,7 +77,6 @@ app.post("/auth/register", async (req, res) => {
     res.status(500).json({ msg: "Erro ao salvar o usuário." });
   }
 });
-
 
 // Rota de login
 app.post("/auth/login", async (req, res) => {
@@ -108,21 +115,17 @@ app.post("/auth/login", async (req, res) => {
   }
 });
 
-
- const dbUser = process.env.DB_USER;
- const dbPassword = process.env.DB_PASS;
-
 // Conexão com o banco de dados MongoDB
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASS;
+
 mongoose
   .connect(
     `mongodb+srv://${dbUser}:${dbPassword}@cluster0.a6hcx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
   )
-
-  //
   .then(() => {
     app.listen(3000, () => {
       console.log(`API rodando na porta 3000!`);
     });
-    
   })
   .catch((err) => console.error(err));
