@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            // Fazendo a requisição POST para o backend
-            //"http://localhost:3000/auth/login"
+            
             //const response = await fetch(`${process.env.API_URL}/auth/register`, {
             const response = await fetch("https://regauthllibre-production.up.railway.app/auth/login", {
                 method: "POST",

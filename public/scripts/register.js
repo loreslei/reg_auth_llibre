@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     //const response = await fetch(`${process.env.API_URL}/auth/register`, {
-    //"http://localhost:3000/auth/register"
-
     try {
       const response = await fetch("https://regauthllibre-production.up.railway.app/auth/register", {
         method: "POST",
