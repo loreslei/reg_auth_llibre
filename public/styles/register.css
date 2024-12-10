@@ -42,3 +42,15 @@ body{
 #BtnCadastrar:hover{
     opacity: 65%;
 }
+
+
+@media(max-width:1500){
+
+    #ContainerLogin{
+        width: 30%;
+        height: 90%;
+        border-radius: 20px;
+        background-color: #fdfdfd;
+    }
+
+}
