@@ -32,7 +32,7 @@ const path = require("path");
 app.use(express.static("public"));
 
 // Rota para servir o template de registro
-app.get("/auth/register", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "register.html"));
 });
 
