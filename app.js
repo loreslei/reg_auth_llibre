@@ -26,14 +26,89 @@ app.get("/", (req, res) => {
 });
 
 // Inicio tentativa
-const path = require("path");
-
-// Adiciona a pasta 'public' como estática
-app.use(express.static("public"));
-
-// Rota para servir o template de registro
 app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "register.html"));
+  const htmlTemplate = `
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registro</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+              background-color: #f4f4f9;
+          }
+          .form-container {
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+              width: 300px;
+          }
+          h1 {
+              text-align: center;
+          }
+          input, button {
+              width: 100%;
+              margin: 10px 0;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+          button {
+              background-color: #007bff;
+              color: white;
+              border: none;
+              cursor: pointer;
+          }
+          button:hover {
+              background-color: #0056b3;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="form-container">
+          <h1>Registro</h1>
+          <form id="register-form">
+              <input type="text" id="name" placeholder="Nome" required>
+              <input type="email" id="email" placeholder="Email" required>
+              <input type="password" id="password" placeholder="Senha" required>
+              <input type="password" id="confirmpassword" placeholder="Confirme a senha" required>
+              <button type="submit">Registrar</button>
+          </form>
+      </div>
+      <script>
+          document.getElementById("register-form").addEventListener("submit", async (e) => {
+              e.preventDefault();
+              const name = document.getElementById("name").value;
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+              const confirmpassword = document.getElementById("confirmpassword").value;
+
+              try {
+                  const response = await fetch("/auth/register", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ name, email, password, confirmpassword })
+                  });
+
+                  const data = await response.json();
+                  alert(data.msg);
+              } catch (err) {
+                  alert("Erro ao registrar. Tente novamente.");
+              }
+          });
+      </script>
+  </body>
+  </html>
+  `;
+  res.send(htmlTemplate);
 });
 
 //Fim tentativa
