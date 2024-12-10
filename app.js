@@ -20,11 +20,6 @@ app.use(
 
 const User = require("./models/User");
 
-// Rota pública
-app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem-vindo à nossa API!" });
-});
-
 // Inicio tentativa
 const path = require("path");
 
@@ -32,7 +27,7 @@ const path = require("path");
 app.use(express.static("public"));
 
 // Rota para servir o template de registro
-app.get("/register", (req, res) => {
+app.get(["/","/register"], (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
