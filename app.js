@@ -41,6 +41,19 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "home.html"));
+});
+
+
+app.get("/buy", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "buy.html"));
+});
+
+app.get("/search", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "search.html"));
+});
+
 //Fim tentativa
 
 

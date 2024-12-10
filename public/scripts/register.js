@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         alert(result.msg);
-        window.location.href = "login.html";
+        window.location.href = "/login";
       } else {
         alert(`Erro: ${result.msg}`);
       }

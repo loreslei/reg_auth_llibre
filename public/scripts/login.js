@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(result.msg); // Mostra a mensagem de sucesso
                 localStorage.setItem("token", result.token); // Salva o token no LocalStorage
                 // Redireciona para uma página protegida, se necessário
-                window.location.href = "home.html";
+                window.location.href = "/home";
             } else {
                 alert(`Erro: ${result.msg}`); // Mostra a mensagem de erro
             }
