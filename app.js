@@ -10,7 +10,6 @@ app.use(express.json());
 
 
 
-
 // Usa o CORS com a configuração definida
 app.use(cors(corsOptions));
 
