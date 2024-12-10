@@ -1,0 +1,44 @@
+body{
+    background-image: url(imgs/livro.jpg);
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    backdrop-filter: blur(3px) saturate(60%);
+}
+
+#h2{
+    border: none !important;
+    color: rgb(40, 44, 51);
+}
+
+
+.margin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-color{
+    background-color: #b7bdc972 !important;
+}
+
+#ContainerLogin{
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    background-color: #fdfdfd;
+}
+
+#BtnCadastrar{
+    background: linear-gradient(90deg, #00C9FF, #92FE9D) !important;
+    color: #fdfdfd;
+    width: 70%;
+    padding: .5rem 1rem .5rem 1rem;
+    transition: all 1s ease-out;
+}
+
+#BtnCadastrar:hover{
+    opacity: 65%;
+}
