@@ -36,6 +36,11 @@ app.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// Rota para servir o template de registro
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+
 //Fim tentativa
 
 
