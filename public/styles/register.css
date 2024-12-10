@@ -44,11 +44,11 @@ body{
 }
 
 
-@media(max-width:1500){
+@media(max-width:1500px){
 
     #ContainerLogin{
-        width: 30%;
-        height: 90%;
+        width: 40%;
+        height: 95vh;
         border-radius: 20px;
         background-color: #fdfdfd;
     }
