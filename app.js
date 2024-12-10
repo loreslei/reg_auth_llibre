@@ -9,11 +9,6 @@ const app = express();
 app.use(express.json());
 
 
-
-// Usa o CORS com a configuração definida
-app.use(cors(corsOptions));
-
-
 app.use(
   cors({
     origin: "https://regauthllibre-production.up.railway.app",
