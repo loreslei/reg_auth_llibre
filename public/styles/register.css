@@ -49,8 +49,14 @@ body{
     #ContainerLogin{
         width: 40%;
         height: 95vh;
-        border-radius: 20px;
-        background-color: #fdfdfd;
+    }
+
+}
+
+@media(max-width:700px){
+
+    #ContainerLogin{
+        width: 90vw;
     }
 
 }
