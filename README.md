@@ -80,3 +80,9 @@ Para isso, optamos por utilizar a linguagem **Java** com o framework **Springboo
 
 ### Arquivos Importantes:
 - [Slide de Apresentação do ***Canva***](https://www.canva.com/design/DAGVebCgdhc/Mdktplj79k4E-U9nVR0viw/edit?utm_content=DAGVebCgdhc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Diagrama da Arquitetura do Sistema
+
+<div align="center">
+
+  <img src="https://github.com/user-attachments/assets/88dd294b-5bc3-4ce5-97b0-a6af6c0de5e6">
+</div>
