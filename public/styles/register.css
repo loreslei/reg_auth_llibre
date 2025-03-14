@@ -1,10 +1,4 @@
-body{
-    background-image: url(imgs/livro.jpg);
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-    backdrop-filter: blur(3px) saturate(60%);
-}
+
 
 #h2{
     border: none !important;
@@ -47,7 +41,7 @@ body{
 @media(max-width:1500px){
 
     #ContainerLogin{
-        width: 40%;
+        width: 30%;
         height: 95vh;
     }
 

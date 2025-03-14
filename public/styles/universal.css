@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat', sans-serif !important;
-    background-color: #fdfdfd;
+    background-color: #e6e6e6 !important;
     color: rgb(40, 44, 51);
 }
 
@@ -19,4 +19,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.input-group-text{
+    transform: translateX(.15rem);
+    z-index: 50;
 }
