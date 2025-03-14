@@ -36,6 +36,18 @@
     opacity: 65%;
 }
 
+#BtnLogin{
+    background-color: #0984e3;
+    color: #fdfdfd;
+    width: 70%;
+    padding: .5rem 1rem .5rem 1rem;
+    transition: all 1s ease-out;
+}
+
+#BtnLogin:hover{
+    opacity: 65%;
+}
+
 
 @media(max-width:1500px){
 
