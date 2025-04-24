@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //const response = await fetch(`${process.env.API_URL}/auth/register`, {
     try {
-      const response = await fetch("https://regauthllibre-production.up.railway.app/auth/register", {
+      const response = await fetch("https://auth-llibre.netlify.app/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
