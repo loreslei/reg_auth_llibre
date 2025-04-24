@@ -12,7 +12,7 @@
   },
   "name": "projarquitetura",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "test",
     "start": "node app.js"
