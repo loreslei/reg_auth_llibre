@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://auth-llibre.netlify.app",
+    origin: "https://regauthllibre-production.up.railway.app",
     credentials: true,
   })
 );
